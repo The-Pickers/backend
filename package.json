@@ -1,0 +1,30 @@
+{
+    "name": "zupstar",
+    "version": "1.0.0",
+    "description": "2025-google-solution-challendge's zupstar backend",
+    "main": "./src/app.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon ./src/app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/seoki180/backend.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/seoki180/backend/issues"
+    },
+    "homepage": "https://github.com/seoki180/backend#readme",
+    "dependencies": {
+        "dotenv": "^16.5.0",
+        "express": "^5.1.0",
+        "multer": "^1.4.5-lts.2",
+        "mysql2": "^3.14.0",
+        "nodemon": "^3.1.9",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1"
+    }
+}

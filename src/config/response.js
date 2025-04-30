@@ -140,3 +140,13 @@ export const USER_HOME_FAIL = {
     message: 'fail to get user home',
     code: 401,
 }
+export const MAP_CHECK_SUCCESS = {
+    success: true,
+    message: 'success to get maps info',
+    code: 200,
+}
+export const MAP_CHECK_FAIL = {
+    success: false,
+    message: 'fail to get maps info',
+    code: 401,
+}

@@ -2,7 +2,7 @@ import pool from '../config/db.config.js'
 
 export default class users_model {
     static async selectMissionInfo(user_index) {
-        const sql = `select 
+        const query = `select 
         S.score_log_total_score,
         S.score_log_carbon_reduction,
         U.user_mission_count
@@ -11,7 +11,7 @@ export default class users_model {
         where S.user_index = ?`
 
         return new Promise((resolve, reject) => {
-            pool.query(sql, [user_index], (err, res) => {
+            pool.query(query, [user_index], (err, res) => {
                 if (err) reject(err)
                 resolve(res)
             })

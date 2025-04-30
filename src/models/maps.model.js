@@ -2,7 +2,15 @@ import pool from '../config/db.config.js'
 
 export default class maps_model {
     static async selectMissionCountLocally(user_index, location_index) {
-        const query = `select `
+        const query = `
+        select count(*) as mission_count from MISSIONS where user_index = ? and location_index = ?`
+
+        return new Promise((resolve, reject) => {
+            const result = pool.query(query, [user_index, location_index], (err, res) => {
+                if (err) reject(err)
+                else resolve(res)
+            })
+        })
     }
     static async selectUserInfo(user_index) {
         const query = `

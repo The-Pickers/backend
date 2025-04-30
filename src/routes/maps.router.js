@@ -33,7 +33,7 @@ const maps_router = Router()
  *       401:
  *         description: 인증 실패
  */
-maps_router.get('/', maps_controller.map)
+maps_router.get('/', maps_controller.maps)
 
 /**
  * @swagger
@@ -69,6 +69,6 @@ maps_router.get('/', maps_controller.map)
  *       401:
  *         description: 인증 실패
  */
-maps_router.get('/:location_index', (req, res) => {})
+maps_router.get('/:location_index', maps_controller.mapLocally)
 
 export default maps_router

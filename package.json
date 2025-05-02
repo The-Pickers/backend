@@ -1,7 +1,7 @@
 {
-    "name": "zupstar",
+    "name": "the-pickers",
     "version": "1.0.0",
-    "description": "2025-google-solution-challendge's zupstar backend",
+    "description": "2025-google-solution-challendge's the-pickers backend",
     "main": "./src/app.js",
     "type": "module",
     "scripts": {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export const checkAI = async (image) => {
-    const url = 'http://34.46.122.62:8000/analyze'
+export const getMessage = async (image) => {
+    const url = process.env.AISERVER
 
     try {
         const result = await axios({

@@ -10,9 +10,9 @@ export default class missions_controller {
         const user_index = req.headers.authorization
         try {
             const getInfoResponse = await missions_service.getInfo(user_index)
-            return res.json(sucResponse(response.USER_HOME_SUCCESS, getInfoResponse))
+            return res.json(sucResponse(response.MISSION_INFO_SUCCESS, getInfoResponse))
         } catch (err) {
-            return res.json(errResponse(response.USER_HOME_FAIL, err))
+            return res.json(errResponse(response.MISSION_INFO_FAIL, err))
         }
     }
 
@@ -38,7 +38,8 @@ export default class missions_controller {
 
         try {
             const aiResponse = await missions_service.completeMission(body)
-            res.status(HttpStatusCode.Ok).json(sucResponse(response.MAP_CHECK_SUCCESS))
+            res.status(HttpStatusCode.Ok).json(sucResponse(response.MAP_CHECK_SUCCESS,aiResponse))
+            // res.send(body)
         } catch (err) {
             res.status(HttpStatusCode.InternalServerError).json(errResponse(response.USER_HOME_FAIL, err))
         }

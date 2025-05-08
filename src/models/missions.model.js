@@ -26,6 +26,7 @@ export default class missions_model {
             })
         })
     }
+    
     static async insertMissionInfo(body) {
         const query = `
         insert into MISSIONS(
@@ -57,5 +58,21 @@ export default class missions_model {
             mission_message = ?
         where
             user_index = ? and mission_index = ?`
+
+        const location_index = body.location_index
+        const clear_time = body.date_time
+        const carbon_reduction = body.carbon_reduction
+        const detected_waste = body.detected_waste
+        const score = body.score
+        const message = body.message   
+        const user_index = body.user_index
+        const mission_index = body.mission_index
+
+        return new Promise((resolve,reject)=>{
+            const result = pool.query(query,[location_index,clear_time,carbon_reduction,detected_waste,score,message,user_index,mission_index],(err,res)=>{
+                if(err) reject(err)
+                else resolve(res)
+            })
+        })
     }
 }

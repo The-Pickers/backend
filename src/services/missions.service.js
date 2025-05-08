@@ -1,5 +1,5 @@
 import missions_model from '../models/missions.model.js'
-import { checkAI } from '../config/connectAI.js'
+import { getMessage } from '../config/connectAI.js'
 
 export default class missions_service {
     static async startMission(user_index) {
@@ -33,11 +33,22 @@ export default class missions_service {
     }
 
     static async completeMission(body) {
-        const message = await checkAI(body.photo)
-        if (!message || message.length == 0) {
-            throw new Error('ai analyze server error')
+        // const message = await getMessage(body.photo)
+        // if (!message || message.length == 0) {
+        //     throw new Error('ai analyze server error')
+        // }
+        const message = {
+            "message": "잘했음",
+            "total_carbon": 1.1,
+            "points": 100,
+            "detected_objects": 1,
         }
 
+        body.carbon_reduction = message.total_carbon
+        body.detected_waste = message.detected_objects
+        body.score = message.points 
+        body.message = message.message
         const result = await missions_model.updateMissionInfo(body)
+        return result
     }
 }

@@ -100,3 +100,27 @@ export const MISSION_COMPLETE_FAIL = {
     message: 'fail to complete mission',
     code: 400,
 }
+export const USER_IMPACT_SUCCESS = {
+    success: true,
+    message: 'success to get user impact',
+    code: 200,
+}
+
+export const USER_IMPACT_FAIL = {
+    success: false,
+    message: 'fail to get user impact',
+    code: 400,
+}
+
+export const TEAM_CREATE_SUCCESS = {
+    success: true,
+    message: 'success to create team',
+    code: 200,
+}
+
+
+export const TEAM_CREATE_FAIL = {
+    success: false,
+    message: 'fail to create team',
+    code: 400,
+}

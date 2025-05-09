@@ -1,5 +1,5 @@
 import missions_model from '../models/missions.model.js'
-import { getMessage } from '../config/connectAI.js'
+import { getResult } from '../config/connectAI.js'
 
 export default class missions_service {
     static async startMission(user_index) {
@@ -33,7 +33,7 @@ export default class missions_service {
     }
 
     static async completeMission(body) {
-        const message = await getMessage(body.photo)
+        const message = await getResult(body.photo)
         if (!message || message.length == 0) {
             throw new Error('ai analyze server error')
         }

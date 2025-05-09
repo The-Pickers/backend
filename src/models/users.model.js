@@ -21,10 +21,20 @@ export default class users_model {
     }
 
     static async selectUserInfo(data){
-        console.log(data)
         const result = await prisma.USERS.findMany({
             where:{
                 user_index : data.user_index,
+            }
+        })
+        return result
+    }
+    static async selectCarbon(user_index){
+        const result = await prisma.sCORES_LOG.findMany({
+            where:{
+                user_index : parseInt(user_index),
+            },
+            select:{
+                score_log_carbon_reduction : true
             }
         })
         return result

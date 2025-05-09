@@ -2,9 +2,26 @@ import * as response from "../config/response.js"
 import { sucResponse, errResponse } from "../config/baseResponse.js"
 import teams_service from "../services/teams.service.js"
 import { HttpStatusCode } from "axios"
-import { team_join } from "../dtos/team.dto.js"
+import { team_join,team_create } from "../dtos/team.dto.js"
 
 export default class teams_controller {
+    static async create(req,res){
+        const user_index = req.headers.authorization
+        const team_name = req.body.team_name
+        const team_profile = req.body.team_profile
+
+        const data = new team_create({user_index,team_name,team_profile})
+
+        try{
+            const createResponse = await teams_service.create(data)
+            res.status(HttpStatusCode.Ok).json(sucResponse(response.TEAM_CREATE_SUCCESS,createResponse))
+        }
+        catch(err){
+            res.status(HttpStatusCode.InternalServerError).json(errResponse(response.TEAM_CREATE_FAIL,err))
+
+        }
+    }
+
     static async join(req,res){
         const user_index = req.headers.authorization
         const team_index = req.params.team_index

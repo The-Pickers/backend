@@ -6,7 +6,7 @@ export default class maps_service {
         if (!check || check.length == 0) {
             throw new Error('유저 정보를 찾을 수 없습니다.')
         }
-        const result = await maps_model.selectMissionCount(user_index)
+        const result = await maps_model.selectMissioㅈnCount(user_index)
         if (!result || result.length == 0) {
             throw new Error('조회 실패')
         }

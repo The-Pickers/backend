@@ -28,7 +28,6 @@ export default class maps_model {
         const query = `
         SELECT 
             l.location_index,
-            l.location_name,
             COUNT(m.mission_index) AS mission_count
         FROM 
             LOCATIONS l
@@ -36,9 +35,9 @@ export default class maps_model {
             MISSIONS m 
         ON l.location_index = m.location_index AND m.user_index = ?
         WHERE 
-            l.location_index BETWEEN 0 AND 15
+            l.location_index BETWEEN 1 AND 9
         GROUP BY 
-            l.location_index, l.location_name
+            l.location_index
         ORDER BY 
             l.location_index;`
 

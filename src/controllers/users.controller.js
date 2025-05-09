@@ -29,4 +29,15 @@ export default class users_controller {
             res.status(HttpStatusCode.InternalServerError).json(errResponse(response.USER_INFO_FAIL,err))
         }
     }
+
+    static async impact(req,res){
+        const user_index = req.headers.authorization
+        try{
+            const impactResponse = await users_service.impact(user_index)
+            res.status(HttpStatusCode.Ok).json(sucResponse(response.USER_IMPACT_SUCCESS,impactResponse))
+        }
+        catch(err){
+            res.status(HttpStatusCode.InternalServerError).json(errResponse(response.USER_INFO_FAIL,err))
+        }
+    }
 }

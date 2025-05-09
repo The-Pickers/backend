@@ -1,3 +1,4 @@
+import { getMessage } from '../config/connectAI.js'
 import { home,info } from '../dtos/user.dto.js'
 import users_model from '../models/users.model.js'
 
@@ -18,5 +19,18 @@ export default class users_service {
         }
         const res = new info(result[0])
         return res
+    }
+
+    static async impact(user_index){
+        const carbon_reduction = await users_model.selectCarbon(user_index)
+        if(!carbon_reduction || carbon_reduction.length == 0){
+            throw new Error("탄소저감 조회 실패")
+        }
+        const message = await getMessage(carbon_reduction[0].score_log_carbon_reduction)
+        if(!message || message.length == 0){
+            throw new Error("메세지 조회 실패")
+        }
+        return message
+
     }
 }

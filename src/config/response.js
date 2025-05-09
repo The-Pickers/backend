@@ -87,3 +87,16 @@ export const USER_INFO_FAIL = {
     message: 'fail to get user info',
     code: 400,
 }
+
+export const MISSION_COMPLETE_SUCCESS ={
+    success: true,
+    message: 'success to complete mission',
+    code: 200,
+}
+
+
+export const MISSION_COMPLETE_FAIL = {
+    success: false,
+    message: 'fail to complete mission',
+    code: 400,
+}

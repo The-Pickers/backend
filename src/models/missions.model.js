@@ -3,24 +3,9 @@ import { prisma } from '../config/prisma.config.js'
 
 export default class missions_model {
     static async selectAllMission(user_index) {
-        const query = `select
-        *
-        from MISSIONS
-        where user_index = ?
-        `
-
-        return new Promise((resolve, reject) => {
-            pool.query(query, [user_index], (err, res) => {
-                if (err) reject(err)
-                else resolve(res)
-            })
-        })
-    }
-
-    static async selectMission(mission_index){
         const result = await prisma.mISSIONS.findMany({
             where : {
-                mission_index : mission_index
+                user_index : parseInt(user_index)
             },
             select : {
                 mission_index : true,
@@ -30,7 +15,31 @@ export default class missions_model {
                 mission_status : true,
                 mission_carbon_reduction : true,
                 mission_detected_waste : true,
-                mission_score : true
+                mission_score : true,
+                mission_message : true,
+                location_index : true,
+            }
+        })
+        return result
+    }
+
+    static async selectMission(data){
+        const result = await prisma.mISSIONS.findMany({
+            where : {
+                mission_index : parseInt(data.mission_index),
+            },
+            select : {
+                user_index : data.user_index,
+                mission_index : true,
+                mission_take_time : true,
+                mission_start_time : true,
+                mission_clear_time : true,
+                mission_status : true,
+                mission_carbon_reduction : true,
+                mission_detected_waste : true,
+                mission_score : true,
+                mission_message : true,
+                location_index : true,
             }
         })
         return result

@@ -56,9 +56,9 @@ export default class missions_service {
         if(!update || update.length == 0){
             throw new Error('미션 완료 실패')
         }
-        const result = await missions_model.selectMission(body.missison_index)
+        const result = await missions_model.selectMission(body)
         if(!result || result.length == 0){
-            throw new Erro("미션 완료 실패")
+            throw new Error("미션 완료 실패")
         }
         const ms = result[0].mission_take_time
         const seconds = Math.floor((ms / 1000) % 60);

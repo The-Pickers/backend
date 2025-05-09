@@ -95,6 +95,6 @@ missions_router.get('/', missions_controller.getInfo)
  */
 missions_router.post('/start', missions_controller.startMission)
 
-missions_router.patch('/complete/:mission_index', uploadPhotoMiddleware, missions_controller.completeMission)
+missions_router.post('/complete/:mission_index', uploadPhotoMiddleware, missions_controller.completeMission)
 
 export default missions_router

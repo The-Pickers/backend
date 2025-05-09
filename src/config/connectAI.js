@@ -11,10 +11,8 @@ export const getMessage = async (image) => {
                 image_base64: image,
             },
         })
-        console.log(result.data)
         return result.data
     } catch (err) {
-        console.log(err)
         return err
     }
 }

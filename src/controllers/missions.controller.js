@@ -21,31 +21,29 @@ export default class missions_controller {
 
         try {
             const startResponse = await missions_service.startMission(user_index)
-            return res.status(HttpStatusCode.Ok).json(sucResponse(response.MISSION_START_SUCCESS, startResponse))
+            return res.status(HttpStatusCode.Ok).json(sucResponse(response.MISSION_START_SUCCESS, startResponse.missison_index))
         } catch (err) {
             return res.status(HttpStatusCode.InternalServerError).json(errResponse(response.MISSION_START_FAIL, err))
         }
     }
 
     static async completeMission(req, res) {
+
         const user_index = req.headers.authorization
         const photo = req.file.buffer.toString('base64') // 분석 서버로 전송한다
         const mission_index = req.params.mission_index
-        const location_index = req.body.location_index
-        const date_time = new Date()
+        const location_index = req.body.location_idx
+        const date_time =  new Date()
 
         const body = new mission_complete({ user_index, photo, mission_index, location_index, date_time })
 
+        
         try {
             const aiResponse = await missions_service.completeMission(body)
-            res.status(HttpStatusCode.Ok).json(sucResponse(response.MAP_CHECK_SUCCESS,aiResponse))
-            // res.send(body)
+            res.status(HttpStatusCode.Ok).json(sucResponse(response.MISSION_COMPLETE_SUCCESS,aiResponse[0]))
         } catch (err) {
-            res.status(HttpStatusCode.InternalServerError).json(errResponse(response.USER_HOME_FAIL, err))
+            res.status(HttpStatusCode.InternalServerError).json(errResponse(response.MISSION_COMPLETE_FAIL, err))
         }
 
-        // try{
-        //     const uploadResponse
-        // }
     }
 }

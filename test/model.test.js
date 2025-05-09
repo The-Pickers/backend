@@ -1,4 +1,5 @@
 import maps_model from '../src/models/maps.model.js'
+import rank_model from '../src/models/rank.model.js'
 import users_model from '../src/models/users.model.js'
 
 async function testSelectMissionInfo() {
@@ -21,4 +22,19 @@ async function testSelectMissionCount() {
     }
 }
 
-testSelectMissionCount()
+// testSelectMissionCount()
+
+
+async function test() {
+    const result = await rank_model.selectAllRank()
+    const myindex = 31
+    for(const ran of result){
+        if(ran.user_index == myindex){
+            console.log(ran)
+            break
+        }
+    }
+
+}
+
+test()

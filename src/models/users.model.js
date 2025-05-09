@@ -21,12 +21,21 @@ export default class users_model {
     }
 
     static async selectUserInfo(data){
-        const result = await prisma.USERS.findMany({
-            where:{
-                user_index : data.user_index,
-            }
+        const query = `SELECT 
+  U.user_index,
+  U.user_id,
+  U.user_name,
+  U.user_profile,
+  T.team_name
+FROM USERS AS U
+LEFT JOIN TEAMS AS T ON U.team_index = T.team_index
+WHERE U.user_index = ?`; 
+        return new Promise((resolve, reject) => {
+            pool.query(query, [data.user_index], (err, res) => {
+                if (err) reject(err)
+                resolve(res)
+            })
         })
-        return result
     }
     static async selectCarbon(user_index){
         const result = await prisma.sCORES_LOG.findMany({

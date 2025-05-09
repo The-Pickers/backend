@@ -17,6 +17,9 @@ export default class users_service {
         if(!result || result.length == 0){
             throw new Error('유저 정보를 찾을 수 없습니다.')
         }
+        if(result[0].team_name == null){
+            result[0].team_name = ""
+        }
         const res = new info(result[0])
         return res
     }

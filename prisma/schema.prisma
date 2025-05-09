@@ -37,10 +37,11 @@ model SCORES_LOG {
 }
 
 model TEAMS {
-  team_index     Int       @id @default(autoincrement())
-  team_name      String?   @unique(map: "unique_user_id") @db.VarChar(100)
-  team_profile   String?   @db.VarChar(500)
-  team_timestamp DateTime? @default(dbgenerated("(now())")) @db.Timestamp(0)
+  team_index       Int       @id @default(autoincrement())
+  team_name        String?   @unique(map: "unique_user_id") @db.VarChar(100)
+  team_profile     String?   @db.VarChar(500)
+  team_timestamp   DateTime? @default(dbgenerated("(now())")) @db.Timestamp(0)
+  team_description String?   @db.VarChar(100)
 }
 
 model TEAMS_RANK {

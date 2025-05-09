@@ -124,3 +124,16 @@ export const TEAM_CREATE_FAIL = {
     message: 'fail to create team',
     code: 400,
 }
+
+export const TEAM_SEARCH_SUCCESS  ={
+    success: true,
+    message: 'success to search team',
+    code: 200,
+}
+
+export const TEAM_SEARCH_FAIL = {
+    success: false,
+    message: 'fail to search team',
+    code: 400,
+}
+

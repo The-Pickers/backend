@@ -13,9 +13,11 @@ export default class signup_controller {
         const data = new signup({user_id,user_password,user_name})
         try{
             const signupResponse = await signup_service.singup(data)
-            res.status(HttpStatusCode.Ok).json(sucResponse(response.USER_SIGNUP_SUCCESS,signupResponse)) 
+            console.log(signupResponse)
+            res.status(HttpStatusCode.Ok).json(sucResponse(response.USER_SIGNUP_SUCCESS,signupResponse.user_index)) 
         }
         catch(err){
+            console.log(err)
             res.status(HttpStatusCode.InternalServerError).json(errResponse(response.USER_SIGNUP_FAIL,err))
         }
     }

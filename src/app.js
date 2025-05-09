@@ -2,10 +2,12 @@ import express from 'express'
 import { specs, swaggerUi } from './config/swagger.js'
 import login_router from './routes/login.router.js'
 import maps_router from './routes/maps.router.js'
+import fs from "fs"
+import https from "https"
 import missions_router from './routes/missions.router.js'
 // import rank_router from './routes/rank.router.js'
 import signup_router from './routes/signup.router.js'
-// import teams_router from './routes/teams.router.js'
+import teams_router from './routes/teams.router.js'
 import users_router from './routes/users.router.js'
 import morgan from 'morgan'
 
@@ -18,14 +20,24 @@ app.use(express.json());                    // request의 본문을 json으로 �
 app.use(express.urlencoded({ extended: false })); // 단순 객체 문자열 형태로 본문 데이터 해석
 
 
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem'),
+};
+
+
 
 app.use('/login', login_router)
 app.use('/maps', maps_router)
 app.use('/missions', missions_router)
 // app.use('/rank', rank_router)
 app.use('/signup', signup_router)
-// app.use('/teams', teams_router)
+app.use('/teams', teams_router)
 app.use('/users', users_router)
+app.get("/test",(req,res)=>{
+    console.log(req)
+    res.send("test")
+})
 
 app.use((req, res) => {
     res.status(404).json({
@@ -37,3 +49,6 @@ app.use((req, res) => {
 app.listen(3000, () => {
     console.log('hello')
 })
+// https.createServer(options, app).listen(3443, () => {
+//   console.log('HTTPS Server running on port 443');
+// });

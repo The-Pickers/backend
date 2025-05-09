@@ -1,4 +1,5 @@
 import pool from '../config/db.config.js'
+import { prisma } from '../config/prisma.config.js'
 
 export default class missions_model {
     static async selectAllMission(user_index) {
@@ -14,6 +15,25 @@ export default class missions_model {
                 else resolve(res)
             })
         })
+    }
+
+    static async selectMission(mission_index){
+        const result = await prisma.mISSIONS.findMany({
+            where : {
+                mission_index : mission_index
+            },
+            select : {
+                mission_index : true,
+                mission_take_time : true,
+                mission_start_time : true,
+                mission_clear_time : true,
+                mission_status : true,
+                mission_carbon_reduction : true,
+                mission_detected_waste : true,
+                mission_score : true
+            }
+        })
+        return result
     }
     static async selectUserInfo(user_index) {
         const query = `
@@ -75,4 +95,5 @@ export default class missions_model {
             })
         })
     }
+
 }

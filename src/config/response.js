@@ -63,3 +63,27 @@ export const USER_LOGIN_FAIL = {
     code: 400,
 }
 
+
+export const TEAM_JOIN_SUCCESS = {
+    success: true,
+    message: 'success to join team',
+    code: 200,
+}
+
+export const TEAM_JOIN_FAIL ={
+    success: false,
+    message: 'fail to join team',
+    code: 400,
+}
+
+export const USER_INFO_SUCCESS ={
+    success: true,
+    message: 'success to get user info',
+    code: 200,
+}
+
+export const USER_INFO_FAIL = {
+    success: false,
+    message: 'fail to get user info',
+    code: 400,
+}

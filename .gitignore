@@ -92,6 +92,9 @@ web_modules/
 .next
 out
 
+cert.pem
+key.pem
+
 # Nuxt.js build / generate output
 .nuxt
 dist

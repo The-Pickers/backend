@@ -2,7 +2,7 @@ import { Router } from 'express'
 import users_controller from '../controllers/users.controller.js'
 const users_router = Router()
 
-// users_router.get('/')
+users_router.get('/',users_controller.info)
 // users_router.delete('/')
 // users_router.patch('/')
 // users_router.get('/impact')

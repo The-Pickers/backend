@@ -1,4 +1,6 @@
 import pool from '../config/db.config.js'
+import { prisma } from '../config/prisma.config.js'
+
 
 export default class users_model {
     static async selectMissionInfo(user_index) {
@@ -17,4 +19,14 @@ export default class users_model {
             })
         })
     }
-}
+
+    static async selectUserInfo(data){
+        console.log(data)
+        const result = await prisma.USERS.findMany({
+            where:{
+                user_index : data.user_index,
+            }
+        })
+        return result
+    }
+}   

@@ -1,6 +1,6 @@
 import { prisma } from '../config/prisma.config.js'
 
-export default class signup_models {
+export default class signup_model {
     static async selectUser(user_id){
         const result = await prisma.USERS.findMany({
             where : {
@@ -19,5 +19,15 @@ export default class signup_models {
             }
         })
         return result
+    }
+
+    static async insertScoreLog(user_index) {
+        const result = await prisma.sCORES_LOG.create({
+            data : {
+                user_index : user_index
+            },
+        })
+        return result
+        
     }
 }

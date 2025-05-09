@@ -14,16 +14,17 @@ model LOCATIONS {
 
 model MISSIONS {
   mission_index            Int       @id @default(autoincrement())
-  location_index           Int
+  location_index           Int?
   user_index               Int
   mission_status           Int?      @db.TinyInt
   mission_start_time       DateTime? @db.Timestamp(0)
   mission_clear_time       DateTime? @db.Timestamp(0)
-  mission_carbon_redcution Float?    @db.Float
+  mission_carbon_reduction Float?    @db.Float
   mission_detected_waste   Int?
   mission_score            Int?
   mission_message          String?   @db.Text
   mission_timestamp        DateTime? @default(now()) @db.Timestamp(0)
+  mission_take_time        DateTime? @db.Time(0)
 }
 
 model SCORES_LOG {
@@ -54,15 +55,13 @@ model TEAMS_RANK {
 model USERS {
   user_index         Int       @id @default(autoincrement())
   team_index         Int?
+  user_id            String?   @db.VarChar(50)
+  user_password      String?   @db.VarChar(50)
   user_name          String?   @db.VarChar(100)
-  user_birthday      DateTime? @db.DateTime(0)
   user_profile       String?   @db.VarChar(500)
   user_score         Int?
   user_timestamp     DateTime? @default(now()) @db.Timestamp(0)
   user_mission_count Int?      @default(0)
-  user_password      String?   @db.VarChar(50)
-  user_salt          String?   @db.VarChar(200)
-  user_id            String?   @db.VarChar(50)
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.

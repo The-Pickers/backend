@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false })); // 단순 객체 문자열 형
 
 
 
-// app.use('/login', login_router)
+app.use('/login', login_router)
 app.use('/maps', maps_router)
 app.use('/missions', missions_router)
 // app.use('/rank', rank_router)

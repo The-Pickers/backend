@@ -51,3 +51,15 @@ export const USER_SIGNUP_FAIL = {
     code: 400,
 }
 
+export const USER_LOGIN_SUCCESS={
+    success: true,
+    message: 'success to login user',
+    code: 200,
+}
+
+export const USER_LOGIN_FAIL = {
+    success: false,
+    message: 'fail to login user',
+    code: 400,
+}
+

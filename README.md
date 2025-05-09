@@ -1,3 +1,3 @@
 # backend
 
-ZupStart's backend repository
+THE PICKERS's backend repository

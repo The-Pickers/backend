@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model LOCATIONS {
+  location_index Int     @id @default(autoincrement())
+  location_name  String? @db.VarChar(100)
+}
+
+model MISSIONS {
+  mission_index            Int       @id @default(autoincrement())
+  location_index           Int?
+  user_index               Int
+  mission_status           Int?      @db.TinyInt
+  mission_start_time       DateTime? @db.Timestamp(0)
+  mission_clear_time       DateTime? @db.Timestamp(0)
+  mission_carbon_reduction Float?    @db.Float
+  mission_detected_waste   Int?
+  mission_score            Int?
+  mission_message          String?   @db.Text
+  mission_timestamp        DateTime? @default(now()) @db.Timestamp(0)
+  mission_take_time        DateTime? @db.Time(0)
+}
+
+model SCORES_LOG {
+  score_log_index            Int       @id @default(autoincrement())
+  user_index                 Int
+  score_log_added_score      Int?
+  score_log_total_score      Int?
+  score_log_timestamp        DateTime? @default(now()) @db.Timestamp(0)
+  score_log_carbon_reduction Float     @default(0) @db.Float
+}
+
+model TEAMS {
+  team_index       Int       @id @default(autoincrement())
+  team_name        String?   @unique(map: "unique_user_id") @db.VarChar(100)
+  team_profile     String?   @db.VarChar(500)
+  team_timestamp   DateTime? @default(dbgenerated("(now())")) @db.Timestamp(0)
+  team_description String?   @db.VarChar(100)
+}
+
+model TEAMS_RANK {
+  team_rank_index       Int       @id @default(autoincrement())
+  team_index            Int
+  team_rank_total_score Int?
+  team_rank_total_rank  Int?
+  team_rank_timestamp   DateTime? @default(now()) @db.Timestamp(0)
+}
+
+model USERS {
+  user_index         Int       @id @default(autoincrement())
+  team_index         Int?
+  user_id            String?   @db.VarChar(50)
+  user_password      String?   @db.VarChar(50)
+  user_name          String?   @db.VarChar(100)
+  user_profile       String?   @db.VarChar(500)
+  user_score         Int?
+  user_timestamp     DateTime? @default(now()) @db.Timestamp(0)
+  user_mission_count Int?      @default(0)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model USERS_AUTH {
+  user_index     Int
+  user_id        String?   @db.VarChar(50)
+  user_password  String?   @db.VarChar(50)
+  user_salt      String?   @db.VarChar(200)
+  user_timestamp DateTime? @default(now()) @db.Timestamp(0)
+
+  @@ignore
+}
+
+model USERS_RANK {
+  user_rank_index       Int       @id @default(autoincrement())
+  user_index            Int
+  user_rank_total_score Int?
+  user_rank_total_rank  Int?
+  user_rank_timestamp   DateTime? @default(now()) @db.Timestamp(0)
+}

@@ -18,17 +18,17 @@ const upload = multer({
     limits: {
         fileSize: 1000 * 1024 * 1024, // 최대 1GB
     },
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype.startsWith('video/')) {
-            cb(null, true)
-        } else {
-            cb(new Error('Only video files are allowed!'))
-        }
-    },
+    // fileFilter: (req, file, cb) => {
+    //     if (file.mimetype.startsWith('video/')) {
+    //         cb(null, true)
+    //     } else {
+    //         cb(new Error('Only video files are allowed!'))
+    //     }
+    // },
 })
-export const uploadVideoMiddleware = (req, res, next) => {
+export const uploadPhotoMiddleware = (req, res, next) => {
     try {
-        upload.single('video')(req, res, function (err) {
+        upload.single('photo')(req, res, (err) => {
             if (err) {
                 console.error('업로드 중 에러 발생:', err)
                 return next(err) // 에러를 다음 미들웨어로 넘긴다

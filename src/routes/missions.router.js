@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { uploadVideoMiddleware } from '../middleware/multer.js'
+import { uploadPhotoMiddleware } from '../middleware/multer.js'
 import missions_controller from '../controllers/missions.controller.js'
 const missions_router = Router()
 
@@ -51,7 +51,7 @@ const missions_router = Router()
  *       401:
  *         description: 인증 실패
  */
-missions_router.get('/', (req, res) => {})
+missions_router.get('/', missions_controller.getInfo)
 
 /**
  * @swagger
@@ -93,8 +93,8 @@ missions_router.get('/', (req, res) => {})
  *       401:
  *         description: 인증 실패
  */
-missions_router.post('/start', uploadVideoMiddleware, missions_controller.upload_video)
+missions_router.post('/start', missions_controller.startMission)
 
-missions_router.patch('/complete/:mission_index', (req, res) => {})
+missions_router.post('/complete/:mission_index', uploadPhotoMiddleware, missions_controller.completeMission)
 
 export default missions_router

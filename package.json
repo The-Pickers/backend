@@ -1,12 +1,14 @@
 {
-    "name": "zupstar",
+    "name": "the-pickers",
     "version": "1.0.0",
-    "description": "2025-google-solution-challendge's zupstar backend",
+    "description": "2025-google-solution-challendge's The Pickers backend",
     "main": "./src/app.js",
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "nodemon ./src/app.js"
+        "dev": "nodemon app.js ",
+        "db" : "npx prisma db pull && npx prisma generate"
+
     },
     "repository": {
         "type": "git",
@@ -15,15 +17,23 @@
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/seoki180/backend/issues"
+        "url": "https://github.com/seoki180/The-Pickers/issues"
     },
-    "homepage": "https://github.com/seoki180/backend#readme",
+    "homepage": "https://github.com/seoki180/The-Pickers/#readme",
     "dependencies": {
+        "@prisma/client": "^6.7.0",
+        "@turf/turf": "^7.2.0",
+        "axios": "^1.9.0",
         "dotenv": "^16.5.0",
         "express": "^5.1.0",
+        "http-status-codes": "^2.3.0",
+        "morgan": "^1.10.0",
         "multer": "^1.4.5-lts.2",
         "mysql2": "^3.14.0",
         "nodemon": "^3.1.9",
+        "pm2": "^6.0.5",
+        "prisma": "^6.7.0",
+        "shapefile": "^0.6.6",
         "swagger-jsdoc": "^6.2.8",
         "swagger-ui-express": "^5.0.1"
     }

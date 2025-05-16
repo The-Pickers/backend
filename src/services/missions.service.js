@@ -37,7 +37,6 @@ export default class missions_service {
         if (!message || message.length == 0) {
             throw new Error('ai analyze server error')
         }
-
         body.carbon_reduction = message.total_carbon
         body.detected_waste = message.detected_objects
         body.score = message.points 

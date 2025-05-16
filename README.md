@@ -1,7 +1,7 @@
 # Backend
 
 THE PICKERS's backend repository
-<<<<<<< main
+
 
 ## Architecture
 
@@ -18,5 +18,5 @@ THE PICKERS's backend repository
 ![alt text](./images/title.png)
 ![alt text](./images/poster1.png)
 ![alt text](./images/poster2.png)
-=======
->>>>>>> main
+
+

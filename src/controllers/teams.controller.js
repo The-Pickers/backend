@@ -30,7 +30,6 @@ export default class teams_controller {
 
         try{
             const joinResponse = await teams_service.join(data)
-            console.log(joinResponse)
             res.status(HttpStatusCode.Ok).json(sucResponse(response.TEAM_JOIN_SUCCESS,joinResponse))
         }  
         catch(err){

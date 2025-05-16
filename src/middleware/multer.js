@@ -18,13 +18,6 @@ const upload = multer({
     limits: {
         fileSize: 1000 * 1024 * 1024, // 최대 1GB
     },
-    // fileFilter: (req, file, cb) => {
-    //     if (file.mimetype.startsWith('video/')) {
-    //         cb(null, true)
-    //     } else {
-    //         cb(new Error('Only video files are allowed!'))
-    //     }
-    // },
 })
 export const uploadPhotoMiddleware = (req, res, next) => {
     try {

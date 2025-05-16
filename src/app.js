@@ -15,18 +15,8 @@ const app = express()
 
 app.use(morgan('dev'))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
-app.use('/uploads', express.static('../uploads'))
 app.use(express.json());                    // request의 본문을 json으로 해석할 수 있도록 함 (JSON 형태의 요청 body를 파싱하기 위함)
 app.use(express.urlencoded({ extended: false })); // 단순 객체 문자열 형태로 본문 데이터 해석
-app.use('/images', express.static(path.join(process.cwd(), 'images')));
-
-
-
-const options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem'),
-};
-
 
 
 app.use('/login', login_router)
@@ -51,6 +41,3 @@ app.use((req, res) => {
 app.listen(3000, () => {
     console.log('hello')
 })
-// https.createServer(options, app).listen(3443, () => {
-//   console.log('HTTPS Server running on port 443');
-// });

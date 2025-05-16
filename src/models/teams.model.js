@@ -16,7 +16,7 @@ export default class teams_model {
     }
 
     static async selectTeamIndex(team_index){
-           const result = await prisma.TEAMS.findMany({
+        const result = await prisma.TEAMS.findMany({
             where:{
                 team_index : team_index
             }

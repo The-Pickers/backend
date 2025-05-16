@@ -4,7 +4,7 @@ THE PICKERS's backend repository
 
 ## Architecture
 
-![alt text](arch.png)
+![alt text](./images/arch.png)
 
 * 구글클라우드 인프라라 기반 구동, docker로 서비스 배포
 * Nodejs(v23.0.0) + javascript esModule system
@@ -14,6 +14,6 @@ THE PICKERS's backend repository
 * Google Cloud Storage, Google MAPS 추후 도입으로 기능 확장예정
 
 ---
-![alt text](title.png)
-![alt text](poster1.png)
-![alt text](poster2.png)
+![alt text](./images/title.png)
+![alt text](./images/poster1.png)
+![alt text](./images/poster2.png)
